@@ -206,10 +206,46 @@
   .cta .label::before { background: #5ee0cf; }
   .cta .lead { color: #c9d6e2; font-size: 19px; }
   .form-card {
-    background: #fff; border-radius: 24px; padding: 8px;
-    margin-top: 36px; box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    background: #fff; color: var(--text); border-radius: 24px;
+    padding: 32px 22px; margin-top: 36px; max-width: 720px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
   }
-  .form-frame { display: block; width: 100%; height: 1200px; border: 0; border-radius: 18px; }
+  .field { margin-bottom: 26px; border: 0; padding: 0; }
+  .field > label, .field legend {
+    display: block; font-weight: 700; color: var(--ink); margin-bottom: 8px; padding: 0;
+  }
+  .req {
+    display: inline-block; margin-left: 8px; vertical-align: 2px;
+    font-size: 15px; line-height: 1.4; color: #fff; background: #e5413a;
+    padding: 0 8px; border-radius: 4px;
+  }
+  .field input[type="text"], .field input[type="email"], .field textarea {
+    width: 100%; font: inherit; font-size: 18px; color: var(--text);
+    background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; transition: border-color .15s, background .15s;
+  }
+  .field textarea { min-height: 160px; resize: vertical; }
+  .field input:focus, .field textarea:focus {
+    outline: none; border-color: var(--accent); background: #fff;
+    box-shadow: 0 0 0 3px rgba(18,165,148,.18);
+  }
+  .checks { display: flex; flex-wrap: wrap; gap: 10px; }
+  .check {
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+    border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px;
+  }
+  .check input { width: 18px; height: 18px; accent-color: var(--accent); margin: 0; }
+  .check:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+  #other-text { margin-top: 10px; }
+  .submit {
+    width: 100%; justify-content: center; border: 0; cursor: pointer; font-family: inherit;
+  }
+  .submit:disabled { opacity: .6; cursor: wait; transform: none; }
+  .form-msg { margin: 16px 0 0; font-size: 16px; color: #c0362f; }
+  .thanks { text-align: center; padding: 24px 0; }
+  .thanks svg { width: 56px; height: 56px; color: var(--accent); }
+  .thanks h3 { margin: 12px 0 8px; }
+  .thanks p { margin: 0; color: var(--muted); }
 
   footer { background: #071523; color: #9fb0c0; padding: 28px 0; font-size: 15px; }
 
@@ -383,7 +419,42 @@
       <h2>まずは、今の困りごとを<br>ご相談ください。</h2>
       <p class="lead">業務内容が整理できていなくても大丈夫です。</p>
       <div class="form-card">
-        <iframe class="form-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSeVWnjNDfk7zkKfB-TgktRjt1Tvmq1sN_9jp2fq1DtP6O-TPQ/viewform?embedded=true" title="お問い合わせフォーム" loading="lazy">読み込んでいます…</iframe>
+        <form id="contact-form" novalidate>
+          <div class="field">
+            <label for="f-name">お名前<span class="req">必須</span></label>
+            <input type="text" id="f-name" name="entry.896509861" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-company">会社名</label>
+            <input type="text" id="f-company" name="entry.1662918390" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="f-email">メールアドレス<span class="req">必須</span></label>
+            <input type="email" id="f-email" name="entry.434399889" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-body">ご相談内容<span class="req">必須</span></label>
+            <textarea id="f-body" name="entry.577779022" required></textarea>
+          </div>
+          <fieldset class="field">
+            <legend>今お使いのツール</legend>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="entry.857333136" value="Excel">Excel</label>
+              <label class="check"><input type="checkbox" name="entry.857333136" value="スプレッドシート">スプレッドシート</label>
+              <label class="check"><input type="checkbox" name="entry.857333136" value="__other_option__" id="other-check">その他</label>
+            </div>
+            <input type="text" id="other-text" name="entry.857333136.other_option_response" aria-label="その他のツール" hidden>
+          </fieldset>
+          <button type="submit" class="btn submit">送信する
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-msg" id="form-msg" role="alert" hidden></p>
+        </form>
+        <div class="thanks" id="thanks" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+          <h3>送信しました</h3>
+          <p>お問い合わせありがとうございます。</p>
+        </div>
       </div>
     </div>
   </section>
@@ -393,6 +464,50 @@
 <footer>
   <div class="wrap">満尾和博（業務自動化エンジニア）</div>
 </footer>
+
+<script>
+  (function () {
+    var ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeVWnjNDfk7zkKfB-TgktRjt1Tvmq1sN_9jp2fq1DtP6O-TPQ/formResponse';
+    var form = document.getElementById('contact-form');
+    var msg = document.getElementById('form-msg');
+    var otherCheck = document.getElementById('other-check');
+    var otherText = document.getElementById('other-text');
+
+    otherCheck.addEventListener('change', function () {
+      otherText.hidden = !otherCheck.checked;
+      if (otherCheck.checked) otherText.focus();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = form.querySelector('#f-name');
+      var email = form.querySelector('#f-email');
+      var body = form.querySelector('#f-body');
+      var error = '';
+      if (!name.value.trim()) error = 'お名前を入力してください。';
+      else if (!email.value.trim() || !email.checkValidity()) error = 'メールアドレスを正しく入力してください。';
+      else if (!body.value.trim()) error = 'ご相談内容を入力してください。';
+      if (error) { msg.textContent = error; msg.hidden = false; return; }
+      msg.hidden = true;
+
+      var data = new URLSearchParams(new FormData(form));
+      if (!otherCheck.checked) data.delete('entry.857333136.other_option_response');
+
+      var button = form.querySelector('button');
+      button.disabled = true;
+      fetch(ACTION, { method: 'POST', mode: 'no-cors', body: data })
+        .then(function () {
+          form.hidden = true;
+          document.getElementById('thanks').hidden = false;
+        })
+        .catch(function () {
+          button.disabled = false;
+          msg.textContent = '送信できませんでした。時間をおいてもう一度お試しください。';
+          msg.hidden = false;
+        });
+    });
+  })();
+</script>
 
 </body>
 </html>
