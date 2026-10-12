@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>満尾和博（業務自動化エンジニア）｜手作業、もっとシンプルに。</title>
+<meta name="description" content="Excel・GAS・Python・AIで、繰り返し業務を自動化">
+<style>
+  :root {
+    --text: #1f2328;
+    --muted: #57606a;
+    --accent: #1f6feb;
+    --accent-dark: #1858c4;
+    --bg: #ffffff;
+    --bg-soft: #f5f7fa;
+    --line: #d8dee4;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--bg);
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap { padding-top: 14px; padding-bottom: 14px; }
+  .name { font-size: 20px; font-weight: 700; margin: 0; }
+  .name small { font-size: 15px; font-weight: 400; color: var(--muted); margin-left: 6px; }
+
+  section { padding: 64px 0; }
+  section:nth-of-type(even) { background: var(--bg-soft); }
+  .label { font-size: 15px; color: var(--accent); font-weight: 700; letter-spacing: .08em; margin: 0 0 8px; }
+  h1 { font-size: 34px; line-height: 1.4; margin: 0 0 16px; }
+  h2 { font-size: 26px; line-height: 1.5; margin: 0 0 20px; }
+  h3 { font-size: 20px; line-height: 1.5; margin: 0 0 8px; }
+  p { margin: 0 0 16px; }
+
+  .hero { padding: 88px 0; }
+  .hero .lead { font-size: 20px; color: var(--muted); margin-bottom: 32px; }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 14px 28px;
+    border-radius: 8px;
+  }
+  .btn:hover { background: var(--accent-dark); }
+
+  ul.list { margin: 0; padding-left: 1.3em; }
+  ul.list li { margin-bottom: 6px; }
+
+  .cards { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  .card { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+  .card p:last-child { margin-bottom: 0; }
+
+  .videos { display: grid; gap: 24px; grid-template-columns: 1fr; margin-top: 24px; }
+  .video { margin: 0; }
+  .video .frame { position: relative; aspect-ratio: 16 / 9; background: #000; border-radius: 8px; overflow: hidden; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video figcaption { font-size: 16px; margin-top: 8px; }
+
+  ol.flow { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  ol.flow li {
+    counter-increment: step;
+    position: relative;
+    padding: 12px 0 12px 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  ol.flow li:last-child { border-bottom: 0; }
+  ol.flow li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 12px;
+    width: 36px; height: 36px; line-height: 36px;
+    text-align: center; border-radius: 50%;
+    background: var(--accent); color: #fff; font-weight: 700; font-size: 16px;
+  }
+  .price { margin-top: 32px; }
+
+  .form-frame { width: 100%; height: 1200px; border: 0; margin-top: 24px; background: var(--bg); }
+
+  footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 15px; color: var(--muted); }
+
+  @media (min-width: 720px) {
+    h1 { font-size: 44px; }
+    h2 { font-size: 30px; }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .videos { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="name">満尾和博<small>（業務自動化エンジニア）</small></p>
+  </div>
+</header>
+
+<main>
+
+  <!-- 01 トップ -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>手作業、もっとシンプルに。</h1>
+      <p class="lead">Excel・GAS・Python・AIで、繰り返し業務を自動化</p>
+      <a class="btn" href="#contact">業務改善を相談する</a>
+    </div>
+  </section>
+
+  <!-- 02 共感 -->
+  <section>
+    <div class="wrap">
+      <h2>こんな作業に時間を取られていませんか？</h2>
+      <ul class="list">
+        <li>転記</li>
+        <li>集計</li>
+        <li>在庫管理</li>
+        <li>勤怠集計</li>
+        <li>帳票作成</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 03 解決策 -->
+  <section>
+    <div class="wrap">
+      <h2>今の業務に合わせた自動化ツールを開発</h2>
+      <p>既存のExcelやスプレッドシートを活用し、必要な範囲から改善</p>
+    </div>
+  </section>
+
+  <!-- 04 サービス -->
+  <section>
+    <div class="wrap">
+      <h2>ご依頼いただけること</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>業務自動化</h3>
+          <p>Excel VBA／GAS／Python</p>
+        </div>
+        <div class="card">
+          <h3>データ集計</h3>
+        </div>
+        <div class="card">
+          <h3>管理ツールの作成</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 実績・信頼 -->
+  <section>
+    <div class="wrap">
+      <h2>実際に取り組んだ業務改善</h2>
+      <ul class="list">
+        <li>在庫管理の標準化</li>
+        <li>約60人が利用するExcel VBAツール</li>
+      </ul>
+
+      <h3 style="margin-top:40px;">動画ポートフォリオ</h3>
+      <div class="videos">
+        <figure class="video">
+          <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/w0kw5uCSOaM" title="不動産の退去立会をGAS WEBアプリで完全効率化" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+          <figcaption>不動産の退去立会をGAS WEBアプリで完全効率化｜スマホ入力→自動管理できるWebアプリを作った</figcaption>
+        </figure>
+        <figure class="video">
+          <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/FKdVFEKbpII" title="【LINE連携】メッセージを送るだけで請求書を自動作成" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+          <figcaption>【LINE連携】メッセージを送るだけで請求書を自動作成｜GAS × スプレッドシート</figcaption>
+        </figure>
+        <figure class="video">
+          <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/l0F4BhOI4_4" title="シフト表をスプレッドシート×AI(gemini)で作成" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+          <figcaption>シフト表をスプレッドシート×AI(gemini)で作成</figcaption>
+        </figure>
+        <figure class="video">
+          <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/WJqNSWhFZjw" title="スプレッドシート×GAS（スマホ対応）現場作業報告書作成アプリ" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+          <figcaption>スプレッドシート×GAS（スマホ対応）現場作業報告書作成アプリ</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 依頼の流れ・料金 -->
+  <section>
+    <div class="wrap">
+      <h2>ご依頼の流れ</h2>
+      <ol class="flow">
+        <li>相談</li>
+        <li>要件整理</li>
+        <li>試作</li>
+        <li>確認</li>
+        <li>納品・使い方の説明</li>
+      </ol>
+      <div class="price">
+        <h3>料金</h3>
+        <p>（要確認）</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 最終CTA -->
+  <section id="contact">
+    <div class="wrap">
+      <h2>まずは、今の困りごとをご相談ください。</h2>
+      <p>業務内容が整理できていなくても大丈夫です。</p>
+      <iframe class="form-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSeVWnjNDfk7zkKfB-TgktRjt1Tvmq1sN_9jp2fq1DtP6O-TPQ/viewform?embedded=true" title="お問い合わせフォーム" loading="lazy">読み込んでいます…</iframe>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">満尾和博（業務自動化エンジニア）</div>
+</footer>
+
+</body>
+</html>
